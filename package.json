@@ -9,7 +9,6 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "host": "vite --host"
-
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
