@@ -1,0 +1,255 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+    8. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* -------------------------------------------------------------------------------------------------------------------- */
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.sambutan {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 6rem;
+  align-items: center;
+  height: 70vh;
+}
+
+.sambutan h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  width: 50%;
+  text-align: center;
+}
+
+.sambutan p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.bg {
+  background-image: url("img/background.png");
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  background-size: 100%;
+}
+
+.container-alamat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.alamat {
+  display: flex;
+  color: white;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.alamat div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.alamat > div > input {
+  padding-block: 4px;
+  width: 16rem;
+  padding-left: 2%;
+}
+
+.btn {
+  padding: 9px 2rem;
+  border-color: #1a8fdd;
+  color: #1a8fdd;
+}
+
+.map {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.info-budaya {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pemesanan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-budaya > h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.des-info-budaya {
+  margin-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #d9d9d9;
+  margin-inline: 5.5rem;
+  padding: 2rem 4rem;
+  border-radius: 5px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-container > button {
+  background: #1a8fdd;
+  color: rgb(252, 252, 252);
+  border-radius: 5px;
+  border: none;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* Modal PopUp */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #ffffff !important;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modal-content .rating {
+  color: #f6931e;
+}
+
+.modal-content .price {
+  font-weight: bold;
+}
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.item1 {
+  margin: auto;
+  background-color: #424141;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* modal content */
