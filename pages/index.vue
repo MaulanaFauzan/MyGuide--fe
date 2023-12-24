@@ -14,15 +14,15 @@
             <div class="container-alamat">
                 <div class="alamat">
                     <div class="">
-                        <p style="margin-bottom: 0">Kota</p>
+                        <p style="margin-bottom: 0; font-size: 25px">Kota</p>
                         <input type="text" name="" id="" style="margin-bottom: 0" />
                     </div>
                     <div class="" style="align-items: center">
-                        <p style="margin-bottom: 0">Destinasi</p>
+                        <p style="margin-bottom: 0; font-size: 25px">Destinasi</p>
                         <input type="text" name="destinasi" id="destinasi" style="margin-bottom: 0" />
                         <a href="Maps.html">
-                            <div class="btn-container pb-0">
-                                <button type="button" class="btn mb-0 h-100">Search</button>
+                            <div class="btn-container">
+                                <button type="button" class="btn" style="margin-top: 18%;">Search</button>
                             </div>
                         </a>
                     </div>

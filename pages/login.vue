@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url("~/assets/img/background.png");
+  /* background-image: url("~/assets/img/background.png"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
