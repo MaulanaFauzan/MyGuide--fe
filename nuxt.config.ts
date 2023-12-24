@@ -2,24 +2,27 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/style.css", "~/assets/maps.css", "~/assets/pemesanan.css"],
+
   modules: [
-    
     [
-      '@pinia/nuxt',
-      
+      "@pinia/nuxt",
+
       {
         autoImports: [
           // automatically imports `defineStore`
-          'defineStore',
-          'nuxt-sweetalert2',
+          "defineStore",
+          "nuxt-sweetalert2",
           {
-            confirmButtonColor: '#FFFFFF'
-          }
+            confirmButtonColor: "#FFFFFF",
+          },
         ],
       },
-      
     ],
+    "nuxt-vue3-google-signin"
   ],
+  googleSignIn: {
+      clientId: "476230501485-d8r0pa7jt1978a059t667ruhm0m8vdbn.apps.googleusercontent.com",
+    },
   app: {
     head: {
       link: [
@@ -44,7 +47,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseUrl: "https://localhost:9090/",
-      appSecret: ""
-    }
+      appSecret: "",
+    },
   },
 });
