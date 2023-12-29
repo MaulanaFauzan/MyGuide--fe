@@ -201,15 +201,3 @@
         </div>
     </div>
 </template>
-
-<script>
-import { defineComponent } from '@vue/composition-api'
-definePageMeta({
-  layout: "noauth",
-});
-export default defineComponent({
-    setup() {
-        
-    },
-})
-</script>

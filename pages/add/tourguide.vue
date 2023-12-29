@@ -101,9 +101,9 @@
         </div>
       </form>
 
-      <!-- <footer>
+      <footer>
           <p>footer</p>
-        </footer> -->
+        </footer>
     </div>
   </div>
 </template>

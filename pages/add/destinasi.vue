@@ -193,10 +193,10 @@
               </button>
             </div>
           </form>
-          <footer>
-            <p>footer</p>
-          </footer>
         </div>
+        <footer>
+          <p>footer</p>
+        </footer>
       </div>
     </div>
   </div>

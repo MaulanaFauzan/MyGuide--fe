@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="padding-left: 1%">GAMA</a>
+        <a class="navbar-brand" href="/" style="padding-left: 1%">GAMA</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -18,16 +18,14 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <NuxtLink class="nav-link" to="/"> Home</NuxtLink>
+                <!-- <a class="nav-link" aria-current="page" href="/">Home</a> -->
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="maps.html">Maps</a>
+                <NuxtLink class="nav-link" to="/auth/login"> Login</NuxtLink>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="pemesanan.html">Pesan Guide</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="profile.html">Profil</a>
+                <NuxtLink class="nav-link" to="/auth/signup"> Sign Up</NuxtLink>
               </li>
             </ul>
           </div>
@@ -35,7 +33,7 @@
       </div>
     </nav>
     <div>
-    <slot />
+      <slot />
     </div>
   </div>
 </template>

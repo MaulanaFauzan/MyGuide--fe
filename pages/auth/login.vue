@@ -148,13 +148,14 @@ button {
   </div>
 </template>
 <script lang="ts" setup>
+
 /// <reference types='google.accounts' />
 import { storeToRefs } from "pinia";
 import { useAuthStore } from "~/store/auth";
 import Swal from "sweetalert2";
 
 definePageMeta({
-  layout: "clear",
+  layout: "noauth",
 });
 
 const { authenticateUser } = useAuthStore(); // use auth store
