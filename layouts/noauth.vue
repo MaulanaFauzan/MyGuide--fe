@@ -22,10 +22,10 @@
                 <!-- <a class="nav-link" aria-current="page" href="/">Home</a> -->
               </li>
               <li class="nav-item">
-                <NuxtLink class="nav-link" to="/auth/login"> Login</NuxtLink>
+                <NuxtLink class="nav-link" to="/login"> Login</NuxtLink>
               </li>
               <li class="nav-item">
-                <NuxtLink class="nav-link" to="/auth/signup"> Sign Up</NuxtLink>
+                <NuxtLink class="nav-link" to="/signup"> Sign Up</NuxtLink>
               </li>
             </ul>
           </div>

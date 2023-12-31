@@ -17,18 +17,20 @@
         <div class="navbar" style="padding-right: 1%">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <NuxtLink class="nav-link" to="/home/"> Home</NuxtLink>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="maps.html">Maps</a>
+                <NuxtLink class="nav-link" to="/home/maps"> Maps</NuxtLink>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="pemesanan.html">Pesan Guide</a>
+                <NuxtLink class="nav-link" to="/home/profile"> Profile</NuxtLink>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="profile.html">Profil</a>
+                <a class="nav-link" @click="logout">Logout</a>
               </li>
+              
             </ul>
           </div>
         </div>
@@ -39,3 +41,18 @@
     </div>
   </div>
 </template>
+<script lang="ts" setup>
+import { storeToRefs } from 'pinia';
+import { useAuthStore } from '~/store/auth';
+
+
+const router = useRouter();
+
+const { logUserOut } = useAuthStore();
+const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
+
+const logout = () => {
+  logUserOut();
+  router.push('/auth/login');
+};
+</script>

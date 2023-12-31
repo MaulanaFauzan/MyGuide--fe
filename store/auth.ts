@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import Swal from "sweetalert2";
 
 interface UserPayloadInterface {
   email: string;
@@ -11,6 +12,9 @@ export const useAuthStore = defineStore("auth", {
     loading: false,
   }),
   actions: {
+    setLoggedIn(authenticated: boolean): void {
+      this.authenticated = authenticated;
+    },
     async authenticateUser({ email, password }: UserPayloadInterface) {
       console.log("sebelom login", this.authenticated);
 
@@ -42,9 +46,33 @@ export const useAuthStore = defineStore("auth", {
       }
     },
     logUserOut() {
-      const token = useCookie("token"); // useCookie new hook in nuxt 3
-      this.authenticated = false; // set authenticated  state value to false
-      token.value = null; // clear the token cookie
+      Swal.fire({
+        icon: "question",
+        title: "Confirmation",
+        text: "Are you sure you want to logout?",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const token = useCookie("token"); // useCookie new hook in nuxt 3
+          const user = useCookie("user"); // useCookie new hook in nuxt 3
+          this.authenticated = false; // set authenticated  state value to false
+          token.value = null; // clear the token cookie
+          user.value = null;
+          Swal.fire({
+            icon: "success",
+            title: "Success!",
+            text: "Logout successfully!",
+            confirmButtonText: "OK"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              const router = useRouter();
+              router.push("/auth/login");
+            }
+          });
+        }
+      });
     },
   },
 });

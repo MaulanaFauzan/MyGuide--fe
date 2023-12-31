@@ -1,9 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  
   css: ["~/assets/style.css", "~/assets/maps.css", "~/assets/pemesanan.css"],
   
   modules: [
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: [
+          // automatically imports `defineStore`
+          'defineStore',
+        ],
+      },
+    ],
     [
       "@pinia/nuxt",
 
@@ -32,6 +42,7 @@ export default defineNuxtConfig({
     //   rel="stylesheet"
     // />
   app: {
+    
     head: {
       link: [
         {
@@ -68,4 +79,5 @@ export default defineNuxtConfig({
       appSecret: "",
     },
   },
-});
+} 
+);

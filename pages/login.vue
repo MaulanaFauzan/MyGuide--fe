@@ -182,7 +182,7 @@ const login = async () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         //Swal.fire("Saved!", "", "success");
-        router.push("/");
+        router.push("/home");
       }
     });
   } else if (!authenticated.value) {
@@ -195,7 +195,7 @@ const login = async () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         //Swal.fire("Saved!", "", "success");
-        router.push("/login");
+        router.push("/auth/login");
       }
     });
   }
