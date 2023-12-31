@@ -195,7 +195,7 @@ const login = async () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         //Swal.fire("Saved!", "", "success");
-        router.push("/auth/login");
+        router.push("/login");
       }
     });
   }

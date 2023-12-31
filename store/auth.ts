@@ -68,7 +68,7 @@ export const useAuthStore = defineStore("auth", {
           }).then((result) => {
             if (result.isConfirmed) {
               const router = useRouter();
-              router.push("/auth/login");
+              router.push("/login");
             }
           });
         }
