@@ -16,7 +16,7 @@ export const useAuthStore = defineStore("auth", {
 
       // useFetch from nuxt 3
       const { data, pending }: any = await useFetch(
-        "http://localhost:9090/user/login",
+        "http://192.168.0.102:9090/user/login",
         {
           method: "post",
           headers: { "Content-Type": "application/json" },
@@ -40,6 +40,16 @@ export const useAuthStore = defineStore("auth", {
         }
         console.log("setelah login", this.authenticated);
       }
+    },
+    async authenticateUserOauth(userOauth: any) {
+      const token = useCookie("token"); // useCookie new hook in nuxt 3
+      const user = useCookie("user"); // useCookie new hook in nuxt 3
+      user.value = userOauth;
+      token.value = userOauth._token; // set token to cookie
+      if (token.value) {
+        this.authenticated = true; // set authenticated  state value to true
+      }
+      console.log("setelah login", this.authenticated);
     },
     logUserOut() {
       const token = useCookie("token"); // useCookie new hook in nuxt 3

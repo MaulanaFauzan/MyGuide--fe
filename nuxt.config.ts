@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/style.css", "~/assets/maps.css", "~/assets/pemesanan.css"],
-
   modules: [
     [
       "@pinia/nuxt",
@@ -46,7 +45,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseUrl: "https://localhost:9090/",
+      baseUrl: "http://192.168.0.102:9090/",
       appSecret: "",
     },
   },

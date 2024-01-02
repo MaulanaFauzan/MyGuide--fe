@@ -138,6 +138,7 @@ button {
           @error="handleLoginError"
         >
         </GoogleSignInButton>
+        <GithubLoginButton></GithubLoginButton>
       </div>
       <div class="social">
         <!-- <button id="cobabutton"></button>
