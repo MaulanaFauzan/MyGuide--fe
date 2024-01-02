@@ -4,8 +4,8 @@
       <div class="shape"></div>
       <div class="shape"></div>
     </div>
-    <form @submit.prevent="register" class="w-75">
-      <div class="p-3 py-4">
+    <form @submit.prevent="register" class="FormRegist">
+      <div class="p-9 py-20">
         <h4>SIGN UP!</h4>
 
         <div class="row mt-2">
@@ -30,7 +30,7 @@
             />
           </div>
         </div>
-        <div class="row mt-2">
+        <div class="row mt-30">
           <div class="col-md-12">
             <label class="labels">Alamat</label>
             <input
@@ -82,7 +82,9 @@
             <button class="btn">Sign Up</button>
           </div>
 
-          <p>Already have account? <a href="login">Login!</a></p>
+          <div class="center">
+            <p>Already have account?<a href="login">Login!</a></p>
+          </div>
         </div>
       </div>
     

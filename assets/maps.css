@@ -113,6 +113,7 @@ body {
   position: absolute;
   z-index: -1;
   background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .container-alamat {

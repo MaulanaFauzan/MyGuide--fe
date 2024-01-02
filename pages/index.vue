@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="">
+        <div>
             <div class="bg"></div>
         </div>
         <div class="main">
@@ -83,6 +83,7 @@
                                 <h2>Kopi Toko Djawa</h2>
                                 <p class="rating">5.0</p>
                                 <p class="price">Start From Rp.18k - Rp.30k</p>
+                                <p>Bandung</p>
                                 <div style="padding-top: 5%">
                                     <button type="button" class="btn btn-outline-dark">
                                         Selengkapnya
@@ -98,6 +99,7 @@
                                 <h2>FarmHouse Bandung</h2>
                                 <p class="rating">5.0</p>
                                 <p class="price">Start From Rp.18k - Rp.30k</p>
+                                <p>Bandung</p>
                                 <div style="padding-top: 5%">
                                     <button type="button" class="btn btn-outline-dark">
                                         Selengkapnya
@@ -113,6 +115,7 @@
                                 <h2>FarmHouse Bandung</h2>
                                 <p class="rating">5.0</p>
                                 <p class="price">Start From Rp.18k - Rp.30k</p>
+                                <p>Bandung</p>
                                 <div style="padding-top: 5%">
                                     <button type="button" class="btn btn-outline-dark">
                                         Selengkapnya
@@ -128,6 +131,7 @@
                                 <h2>FarmHouse Bandung</h2>
                                 <p class="rating">5.0</p>
                                 <p class="price">Start From Rp.18k - Rp.30k</p>
+                                <p>Bandung</p>
                                 <div style="padding-top: 5%">
                                     <button type="button" class="btn btn-outline-dark">
                                         Selengkapnya
@@ -143,6 +147,7 @@
                                 <h2>FarmHouse Bandung</h2>
                                 <p class="rating">5.0</p>
                                 <p class="price">Start From Rp.18k - Rp.30k</p>
+                                <p>Bandung</p>
                                 <div style="padding-top: 5%">
                                     <button type="button" class="btn btn-outline-dark">
                                         Selengkapnya
@@ -158,6 +163,7 @@
                                 <h2>Kopi Toko Djawa</h2>
                                 <p class="rating">5.0</p>
                                 <p class="price">Start From Rp.18k - Rp.30k</p>
+                                <p class="kota">Bandung</p>
                                 <div style="padding-top: 5%">
                                     <button type="button" class="btn btn-outline-dark">
                                         Selengkapnya
@@ -186,18 +192,16 @@
                                 <button type="button" class="btn btn-secondary">
                                     cari Lain
                                 </button>
-                                <a href="Maps.html"><button type="button" class="btn btn-primary">
+                                <a href="Maps.html">
+                                    <button type="button" class="btn btn-primary">
                                         Pilih
-                                    </button></a>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- <footer>
-        <p>footer</p>
-      </footer> -->
         </div>
     </div>
 </template>

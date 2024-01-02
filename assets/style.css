@@ -177,6 +177,10 @@ body {
   margin-bottom: 5px;
 }
 
+.item .kota {
+  margin-bottom: 5px;
+}
+
 /* .footer .p {
           text-align: center;
           justify-content: center;
@@ -536,3 +540,11 @@ button {
 .jc-content {
   justify-content: left;
 }
+
+/* -----signUp---------------- */
+.FormRegist {
+  width: 70%;
+  height: 98%;
+  padding-top: 2%;
+}
+

@@ -1,11 +1,5 @@
 <style media="screen">
-*,
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 
 body {
   /* background-image: url("~/assets/img/background.png"); */
@@ -114,10 +108,6 @@ button {
 </style>
 <template>
   <div class="container-scroller">
-    <div class="background">
-      <div class="shape"></div>
-      <div class="shape"></div>
-    </div>
     <form @submit.prevent="login">
       <h3>Login Here</h3>
 
@@ -125,9 +115,7 @@ button {
       <input type="text" placeholder="Email" id="Email" v-model="user.email" />
 
       <label for="password">Password</label>
-      <input
-        type="password"
-        placeholder="Password"
+      <input type="password" placeholder="Password"
         v-model="user.password"
         id="password"
       />
