@@ -14,7 +14,7 @@ body {
   top: 50%;
 }
 
-form {
+.formLogin {
   height: 520px;
   width: 430px;
   background-color: rgba(255, 255, 255, 0.13);
@@ -108,7 +108,7 @@ button {
 </style>
 <template>
   <div class="container-scroller">
-    <form @submit.prevent="login">
+    <form @submit.prevent="login" class="formLogin">
       <h3>Login Here</h3>
 
       <label for="username">Email</label>
