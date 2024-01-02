@@ -131,22 +131,31 @@ button {
         v-model="user.password"
         id="password"
       />
-
-      <a href="index.html"><button>Log In</button></a>
-      <!-- <div class="social">
-                <div class="go"><i class="fab fa-google"></i> Google</div>
-                <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
-            </div> -->
+      <div>
+        <button>Log In</button>
+        <GoogleSignInButton
+          @success="handleLoginSuccess"
+          @error="handleLoginError"
+        >
+        </GoogleSignInButton>
+      </div>
+      <div class="social">
+        <!-- <button id="cobabutton"></button>
+          <div class="go" id="googleButton" type="button"><i class="fab fa-google"></i> Google</div>
+          <div class="fb"><i class="fab fa-facebook"></i> Facebook</div> -->
+      </div>
     </form>
   </div>
 </template>
 <script lang="ts" setup>
+
+/// <reference types='google.accounts' />
 import { storeToRefs } from "pinia";
 import { useAuthStore } from "~/store/auth";
 import Swal from "sweetalert2";
 
 definePageMeta({
-  layout: "clear",
+  layout: "noauth",
 });
 
 const { authenticateUser } = useAuthStore(); // use auth store
@@ -168,12 +177,12 @@ const login = async () => {
       title: "Success",
       text: "Login Success!",
       icon: "success",
-      confirmButtonText: "OK"
+      confirmButtonText: "OK",
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         //Swal.fire("Saved!", "", "success");
-        router.push("/");
+        router.push("/home");
       }
     });
   } else if (!authenticated.value) {
@@ -181,7 +190,7 @@ const login = async () => {
       title: "Error!",
       text: "Login Error, Please Try Again!",
       icon: "error",
-      confirmButtonText: "Try Again!"
+      confirmButtonText: "Try Again!",
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
@@ -190,5 +199,21 @@ const login = async () => {
       }
     });
   }
+};
+
+import {
+  GoogleSignInButton,
+  type CredentialResponse,
+} from "vue3-google-signin";
+
+// handle success event
+const handleLoginSuccess = (response: CredentialResponse) => {
+  const { credential } = response;
+  console.log("Access Token", credential);
+};
+
+// handle an error event
+const handleLoginError = () => {
+  console.error("Login failed");
 };
 </script>
