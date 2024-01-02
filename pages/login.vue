@@ -1,14 +1,8 @@
 <style media="screen">
-*,
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 
 body {
-  background-image: url("~/assets/img/background.png");
+  /* background-image: url("~/assets/img/background.png"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -20,7 +14,7 @@ body {
   top: 50%;
 }
 
-form {
+.formLogin {
   height: 520px;
   width: 430px;
   background-color: rgba(255, 255, 255, 0.13);
@@ -114,20 +108,14 @@ button {
 </style>
 <template>
   <div class="container-scroller">
-    <div class="background">
-      <div class="shape"></div>
-      <div class="shape"></div>
-    </div>
-    <form @submit.prevent="login">
+    <form @submit.prevent="login" class="formLogin">
       <h3>Login Here</h3>
 
       <label for="username">Email</label>
       <input type="text" placeholder="Email" id="Email" v-model="user.email" />
 
       <label for="password">Password</label>
-      <input
-        type="password"
-        placeholder="Password"
+      <input type="password" placeholder="Password"
         v-model="user.password"
         id="password"
       />
@@ -149,13 +137,14 @@ button {
   </div>
 </template>
 <script lang="ts" setup>
+
 /// <reference types='google.accounts' />
 import { storeToRefs } from "pinia";
 import { useAuthStore } from "~/store/auth";
 import Swal from "sweetalert2";
 
 definePageMeta({
-  layout: "clear",
+  layout: "noauth",
 });
 
 const { authenticateUser } = useAuthStore(); // use auth store
@@ -182,7 +171,7 @@ const login = async () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         //Swal.fire("Saved!", "", "success");
-        router.push("/");
+        router.push("/home");
       }
     });
   } else if (!authenticated.value) {
