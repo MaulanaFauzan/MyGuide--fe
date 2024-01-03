@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 export default {
   async mounted() {
     const { authenticateUserOauth } = useAuthStore(); // use auth store
-const router = useRouter();
+    const router = useRouter();
     const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
     const currentUrl = window.location.href;
     const urlSearchParams = new URLSearchParams(currentUrl.split("?")[1]);
@@ -29,7 +29,7 @@ const router = useRouter();
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           //Swal.fire("Saved!", "", "success");
-          router.push("/");
+          router.push("/home");
         }
       });
     } else if (!authenticated.value) {

@@ -113,23 +113,19 @@ button {
       <input type="text" placeholder="Email" id="Email" v-model="user.email" />
 
       <label for="password">Password</label>
-      <input
-        type="password"
-        placeholder="Password"
-        v-model="user.password"
-        id="password"
-      />
+      <input type="password" placeholder="Password" v-model="user.password" id="password" />
       <div>
         <button>Log In</button>
       </div>
-      <div class="d-flex flex-column">
-        <GoogleSignInButton
-          @success="handleLoginSuccess"
-          @error="handleLoginError"
-        >
+      <div class="d-flex justify-content-center">
+        <GoogleSignInButton @success="handleLoginSuccess" @error="handleLoginError">
         </GoogleSignInButton>
+      </div>
+      <div class="d-flex justify-content-center">
         <GithubLoginButton></GithubLoginButton>
       </div>
+
+
     </form>
   </div>
 </template>
@@ -156,20 +152,22 @@ const router = useRouter();
 const login = async () => {
   await authenticateUser(user.value);
   // redirect to homepage if user is authenticated
-  console.log("auth", authenticated.value);
+  console.log("auth", authenticated);
   if (authenticated.value) {
+
     Swal.fire({
       title: "Success",
       text: "Login Success!",
       icon: "success",
       confirmButtonText: "OK",
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        //Swal.fire("Saved!", "", "success");
-        router.push("/home");
-      }
     });
+    //  .then((result) => {
+    //   /* Read more about isConfirmed, isDenied below */
+    //   if (result.isConfirmed) {
+    //     //Swal.fire("Saved!", "", "success");
+    //     router.push("/home");
+    //   }
+    // });
   } else if (!authenticated.value) {
     Swal.fire({
       title: "Error!",
@@ -217,7 +215,7 @@ const handleLoginSuccess = async (response: CredentialResponse) => {
   }
 };
 
-const getQueryParams = (obj:any) => {
+const getQueryParams = (obj: any) => {
   const params = new URLSearchParams();
   for (const key in obj) {
     params.append(key, obj[key]);
