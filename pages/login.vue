@@ -171,14 +171,13 @@ const login = async () => {
       text: "Login Success!",
       icon: "success",
       confirmButtonText: "OK",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        //Swal.fire("Saved!", "", "success");
+        router.push("/home");
+      }
     });
-    //  .then((result) => {
-    //   /* Read more about isConfirmed, isDenied below */
-    //   if (result.isConfirmed) {
-    //     //Swal.fire("Saved!", "", "success");
-    //     router.push("/home");
-    //   }
-    // });
   } else if (!authenticated.value) {
     Swal.fire({
       title: "Error!",
