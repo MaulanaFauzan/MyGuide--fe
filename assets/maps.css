@@ -85,7 +85,7 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   padding-bottom: 6rem;
   align-items: center;
   height: 70vh;

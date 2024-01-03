@@ -1,6 +1,4 @@
 <style media="screen">
-
-
 body {
   /* background-image: url("~/assets/img/background.png"); */
   background-repeat: no-repeat;
@@ -115,12 +113,16 @@ button {
       <input type="text" placeholder="Email" id="Email" v-model="user.email" />
 
       <label for="password">Password</label>
-      <input type="password" placeholder="Password"
+      <input
+        type="password"
+        placeholder="Password"
         v-model="user.password"
         id="password"
       />
       <div>
         <button>Log In</button>
+      </div>
+      <div class="d-flex flex-column">
         <GoogleSignInButton
           @success="handleLoginSuccess"
           @error="handleLoginError"
@@ -128,16 +130,10 @@ button {
         </GoogleSignInButton>
         <GithubLoginButton></GithubLoginButton>
       </div>
-      <div class="social">
-        <!-- <button id="cobabutton"></button>
-          <div class="go" id="googleButton" type="button"><i class="fab fa-google"></i> Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i> Facebook</div> -->
-      </div>
     </form>
   </div>
 </template>
 <script lang="ts" setup>
-
 /// <reference types='google.accounts' />
 import { storeToRefs } from "pinia";
 import { useAuthStore } from "~/store/auth";
@@ -194,13 +190,40 @@ import {
   GoogleSignInButton,
   type CredentialResponse,
 } from "vue3-google-signin";
-
+import { decodeCredential } from "vue3-google-signin";
 // handle success event
-const handleLoginSuccess = (response: CredentialResponse) => {
-  const { credential } = response;
-  console.log("Access Token", credential);
+const handleLoginSuccess = async (response: CredentialResponse) => {
+  let { credential } = response;
+  credential = credential !== undefined ? credential : "false";
+  if (credential != "false") {
+    const decodedCredential = decodeCredential(credential);
+    console.log(decodedCredential);
+    const url = `http://localhost:9090/user/OAuthGoogle?${getQueryParams(decodedCredential)}`;
+    console.log(url);
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(decodedCredential),
+      });
+      const data = await response.json();
+      console.log(data);
+      // window.location.hr     ef=data.url;
+    } catch (error) {
+      console.error("Error posting data:", error);
+    }
+  }
 };
 
+const getQueryParams = (obj:any) => {
+  const params = new URLSearchParams();
+  for (const key in obj) {
+    params.append(key, obj[key]);
+  }
+  return params.toString();
+}
 // handle an error event
 const handleLoginError = () => {
   console.error("Login failed");
