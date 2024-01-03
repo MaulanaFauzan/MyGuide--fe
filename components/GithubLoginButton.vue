@@ -1,5 +1,6 @@
 <template>
-  <button class="btn bg-dark text-white " @click="loginWithGitHub"> <i class="fab fa-github"></i> Login with GitHub</button>
+  <button class="btn bg-dark text-white " @click="loginWithGitHub"> <i class="fab fa-github"></i> Login with
+    GitHub</button>
 </template>
 
 <script>

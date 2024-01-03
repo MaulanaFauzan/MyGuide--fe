@@ -19,12 +19,7 @@
           </div>
           <div class="" style="align-items: center">
             <p style="margin-bottom: 0; font-size: 25px">Destinasi</p>
-            <input
-              type="text"
-              name="destinasi"
-              id="destinasi"
-              style="margin-bottom: 0"
-            />
+            <input type="text" name="destinasi" id="destinasi" style="margin-bottom: 0" />
             <a href="Maps.html">
               <div class="btn-container">
                 <button type="button" class="btn" style="margin-top: 18%">
@@ -39,7 +34,7 @@
     </div>
   </div>
 
-  
+
 
   <!-- ----------testimoni---------- -->
   <div class="carousel">
@@ -70,20 +65,16 @@
   </div>
   <!-- -----animasi------- -->
   <section style="padding-top: 10%; padding-bottom: 30%;">
-    <div
-      style="
+    <div style="
         float: left;
         width: 50%;
         justify-content: center;
         padding-left: 10%;
         padding-top: 1%;
-      "
-    >
+      ">
       <img
         src="https://img.freepik.com/free-vector/hand-drawn-flat-design-treasure-hunt-illustration_52683-82324.jpg?w=740&t=st=1703874311~exp=1703874911~hmac=5abfd9e68b95a645487a1d9f5fa3caa8bbd9ebc73a848b29fbf5148c7d350f1c"
-        alt=""
-        style="width: 100%"
-      />
+        alt="" style="width: 100%" />
     </div>
 
     <article style="padding-top: 15%; padding-left: 53%; padding-right: 10%">
@@ -95,14 +86,9 @@
   </section>
 
   <!-- Footer -->
-  <footer
-    class="text-center text-lg-start bg-body-tertiary text-muted"
-    data-bs-theme="dark"
-  >
+  <footer class="text-center text-lg-start bg-body-tertiary text-muted" data-bs-theme="dark">
     <!-- Section: Social media -->
-    <section
-      class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-    >
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
       <!-- Left -->
 
       <!-- Left -->
@@ -186,19 +172,8 @@
 </template>
 
 <script>
-function scrollToNextCard() {
-  var carousel = document.querySelector(".carousel");
-  var cards = document.querySelectorAll(".card");
-  var currentIndex = 0;
-
-  currentIndex = (currentIndex + 1) % cards.length;
-  carousel.scrollTo(cards[currentIndex].offsetLeft, 0);
-}
-
-// Scroll every 3 seconds
-setInterval(scrollToNextCard, 3000);
-
 definePageMeta({
-  layout: "noauth",
-});
+  layout: 'noauth'
+})
+
 </script>

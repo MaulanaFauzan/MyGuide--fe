@@ -105,28 +105,39 @@ button {
 }
 </style>
 <template>
-  <div class="container-scroller">
-    <form @submit.prevent="login" class="formLogin">
-      <h3>Login Here</h3>
-
-      <label for="username">Email</label>
-      <input type="text" placeholder="Email" id="Email" v-model="user.email" />
-
-      <label for="password">Password</label>
-      <input type="password" placeholder="Password" v-model="user.password" id="password" />
+  <div>
+    <div>
       <div>
-        <button>Log In</button>
-      </div>
-      <div class="d-flex justify-content-center">
-        <GoogleSignInButton @success="handleLoginSuccess" @error="handleLoginError">
-        </GoogleSignInButton>
-      </div>
-      <div class="d-flex justify-content-center">
-        <GithubLoginButton></GithubLoginButton>
-      </div>
+        <div class="bg"></div>
+
+        <div class="main">
+
+          <div class="container-scroller">
+            <form @submit.prevent="login" class="formLogin">
+              <h3>Login Here</h3>
+
+              <label for="username">Email</label>
+              <input type="text" placeholder="Email" id="Email" v-model="user.email" />
+
+              <label for="password">Password</label>
+              <input type="password" placeholder="Password" v-model="user.password" id="password" />
+              <div>
+                <button>Log In</button>
+              </div>
+              <div class="d-flex justify-content-center">
+                <GoogleSignInButton @success="handleLoginSuccess" @error="handleLoginError">
+                </GoogleSignInButton>
+              </div>
+              <div class="d-flex justify-content-center">
+                <GithubLoginButton></GithubLoginButton>
+              </div>
 
 
-    </form>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -197,7 +208,7 @@ const handleLoginSuccess = async (response: CredentialResponse) => {
     const decodedCredential = decodeCredential(credential);
     console.log(decodedCredential);
     const url = `http://localhost:9090/user/OAuthGoogle?${getQueryParams(decodedCredential)}`;
-    window.location.href=url;
+    window.location.href = url;
   }
 };
 
