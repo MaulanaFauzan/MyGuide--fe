@@ -199,21 +199,7 @@ const handleLoginSuccess = async (response: CredentialResponse) => {
     const decodedCredential = decodeCredential(credential);
     console.log(decodedCredential);
     const url = `http://localhost:9090/user/OAuthGoogle?${getQueryParams(decodedCredential)}`;
-    console.log(url);
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(decodedCredential),
-      });
-      const data = await response.json();
-      console.log(data);
-      // window.location.hr     ef=data.url;
-    } catch (error) {
-      console.error("Error posting data:", error);
-    }
+    window.location.href=url;
   }
 };
 
