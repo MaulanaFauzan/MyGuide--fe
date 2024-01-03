@@ -19,18 +19,13 @@ export default {
     });
     await authenticateUserOauth(queryParamsObject);
     console.log("auth", authenticated.value);
-    if (authenticated.value) {
+    if (authenticated.valu1e) {
       Swal.fire({
         title: "Success",
         text: "Login Success!",
         icon: "success",
         confirmButtonText: "OK",
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          //Swal.fire("Saved!", "", "success");
-          router.push("/home");
-        }
       });
     } else if (!authenticated.value) {
       Swal.fire({
@@ -39,11 +34,6 @@ export default {
         icon: "error",
         confirmButtonText: "Try Again!",
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          //Swal.fire("Saved!", "", "success");
-          router.push("/login");
-        }
       });
     }
   },
