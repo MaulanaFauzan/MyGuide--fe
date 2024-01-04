@@ -77,6 +77,7 @@
         justify-content: center;
         padding-left: 10%;
         padding-top: 1%;
+        padding-bottom: 6%;
       "
     >
       <img

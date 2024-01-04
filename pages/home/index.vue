@@ -19,7 +19,7 @@
                     </div>
                     <div class="" style="align-items: center">
                         <p style="margin-bottom: 0; font-size: 25px">Destinasi</p>
-                        <input type="text" name="destinasi" id="destinasi" style="margin-bottom: 0" />
+                        <input type="text" name="destinasi" id="destinasi" style="margin-bottom: 0"/>
                         <a href="Maps.html">
                             <div class="btn-container">
                                 <button type="button" class="btn" style="margin-top: 18%;">Search</button>
