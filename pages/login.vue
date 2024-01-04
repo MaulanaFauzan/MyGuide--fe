@@ -1,6 +1,4 @@
 <style media="screen">
-
-
 body {
   /* background-image: url("~/assets/img/background.png"); */
   background-repeat: no-repeat;
@@ -107,37 +105,42 @@ button {
 }
 </style>
 <template>
-  <div class="container-scroller">
-    <form @submit.prevent="login" class="formLogin">
-      <h3>Login Here</h3>
-
-      <label for="username">Email</label>
-      <input type="text" placeholder="Email" id="Email" v-model="user.email" />
-
-      <label for="password">Password</label>
-      <input type="password" placeholder="Password"
-        v-model="user.password"
-        id="password"
-      />
+  <div>
+    <div>
       <div>
-        <button>Log In</button>
-        <GoogleSignInButton
-          @success="handleLoginSuccess"
-          @error="handleLoginError"
-        >
-        </GoogleSignInButton>
-        <GithubLoginButton></GithubLoginButton>
+        <div class="bg"></div>
+
+        <div class="main">
+
+          <div class="container-scroller">
+            <form @submit.prevent="login" class="formLogin">
+              <h3>Login Here</h3>
+
+              <label for="username">Email</label>
+              <input type="text" placeholder="Email" id="Email" v-model="user.email" />
+
+              <label for="password">Password</label>
+              <input type="password" placeholder="Password" v-model="user.password" id="password" />
+              <div>
+                <button>Log In</button>
+              </div>
+              <div class="d-flex justify-content-center">
+                <GoogleSignInButton @success="handleLoginSuccess" @error="handleLoginError">
+                </GoogleSignInButton>
+              </div>
+              <div class="d-flex justify-content-center">
+                <GithubLoginButton></GithubLoginButton>
+              </div>
+
+
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="social">
-        <!-- <button id="cobabutton"></button>
-          <div class="go" id="googleButton" type="button"><i class="fab fa-google"></i> Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i> Facebook</div> -->
-      </div>
-    </form>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
-
 /// <reference types='google.accounts' />
 import { storeToRefs } from "pinia";
 import { useAuthStore } from "~/store/auth";
@@ -160,8 +163,9 @@ const router = useRouter();
 const login = async () => {
   await authenticateUser(user.value);
   // redirect to homepage if user is authenticated
-  console.log("auth", authenticated.value);
+  console.log("auth", authenticated);
   if (authenticated.value) {
+
     Swal.fire({
       title: "Success",
       text: "Login Success!",
@@ -194,13 +198,26 @@ import {
   GoogleSignInButton,
   type CredentialResponse,
 } from "vue3-google-signin";
-
+import { decodeCredential } from "vue3-google-signin";
 // handle success event
-const handleLoginSuccess = (response: CredentialResponse) => {
-  const { credential } = response;
-  console.log("Access Token", credential);
+const handleLoginSuccess = async (response: CredentialResponse) => {
+  let { credential } = response;
+  credential = credential !== undefined ? credential : "false";
+  if (credential != "false") {
+    const decodedCredential = decodeCredential(credential);
+    console.log(decodedCredential);
+    const url = `http://localhost:9090/user/OAuthGoogle?${getQueryParams(decodedCredential)}`;
+    window.location.href = url;
+  }
 };
 
+const getQueryParams = (obj: any) => {
+  const params = new URLSearchParams();
+  for (const key in obj) {
+    params.append(key, obj[key]);
+  }
+  return params.toString();
+}
 // handle an error event
 const handleLoginError = () => {
   console.error("Login failed");

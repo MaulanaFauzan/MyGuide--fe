@@ -11,70 +11,33 @@
         <div class="row mt-2">
           <div class="col-md-6">
             <label class="labels">Nama Depan</label>
-            <input
-              type="text"
-              placeholder="Nama Depan"
-              id="NamaDepan"
-              v-model="registerUser.firstName"
-              required
-            />
+            <input type="text" placeholder="Nama Depan" id="NamaDepan" v-model="registerUser.firstName" required />
           </div>
           <div class="col-md-6">
             <label class="labels">Nama Belakang</label>
-            <input
-              type="text"
-              placeholder="Nama Belakang"
-              id="NamaBelakang"
-              v-model="registerUser.lastName"
-              required
-            />
+            <input type="text" placeholder="Nama Belakang" id="NamaBelakang" v-model="registerUser.lastName" required />
           </div>
         </div>
         <div class="row mt-30">
           <div class="col-md-12">
             <label class="labels">Alamat</label>
-            <input
-              type="text"
-              placeholder="Alamat"
-              id="Alamat"
-              v-model="registerUser.address"
-              required
-            />
+            <input type="text" placeholder="Alamat" id="Alamat" v-model="registerUser.address" required />
           </div>
           <div class="col-md-12">
-            <label class="labels">Email</label
-            ><input
-              type="text"
-              placeholder="Email"
-              id="Email"
-              v-model="registerUser.email"
-              required
-            />
+            <label class="labels">Email</label><input type="text" placeholder="Email" id="Email"
+              v-model="registerUser.email" required />
           </div>
         </div>
 
         <div class="row mt-2">
           <div class="col-md-6">
             <label class="labels">Password</label>
-            <input
-              type="password"
-              placeholder="Password"
-              id="Password"
-              required
-              v-model="registerUser.password"
-              
-            />
+            <input type="password" placeholder="Password" id="Password" required v-model="registerUser.password" />
           </div>
           <div class="col-md-6">
             <label class="labels">Ulangi Password</label>
-            <input
-              type="password"
-              placeholder="Ulangi Password"
-              id="ulang"
-              required
-              v-model="registerUser.confirmPassword"
-              
-            />
+            <input type="password" placeholder="Ulangi Password" id="ulang" required
+              v-model="registerUser.confirmPassword" />
           </div>
         </div>
         <div>
@@ -87,7 +50,7 @@
           </div>
         </div>
       </div>
-    
+
     </form>
   </div>
 </template>
@@ -125,6 +88,7 @@ form * {
   outline: none;
   border: none;
 }
+
 form h4 {
   font-size: 30px;
   font-weight: 500;
@@ -138,6 +102,7 @@ label {
   font-size: 16px;
   font-weight: 500;
 }
+
 input {
   display: block;
   height: 50px;
@@ -149,9 +114,11 @@ input {
   font-size: 14px;
   font-weight: 300;
 }
+
 ::placeholder {
   color: #e5e5e5;
 }
+
 button {
   margin-top: 25px;
   width: 100%;
@@ -163,10 +130,12 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
 .social {
   margin-top: 30px;
   display: flex;
 }
+
 .social div {
   background: red;
   width: 150px;
@@ -176,12 +145,15 @@ button {
   color: #eaf0fb;
   text-align: center;
 }
+
 .social div:hover {
   background-color: rgba(255, 255, 255, 0.47);
 }
+
 .social .fb {
   margin-left: 25px;
 }
+
 .social i {
   margin-right: 4px;
 }
@@ -289,7 +261,7 @@ const register = async () => {
         text: 'Registration successful!',
       }).then((result) => {
         const router = useRouter();
-        router.push("/auth/login")
+        router.push("/login")
       });
       // You can handle success behavior here
     } else {

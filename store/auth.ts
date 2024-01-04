@@ -20,7 +20,7 @@ export const useAuthStore = defineStore("auth", {
 
       // useFetch from nuxt 3
       const { data, pending }: any = await useFetch(
-        "http://192.168.0.102:9090/user/login",
+        "http://localhost:9090/user/login",
         {
           method: "post",
           headers: { "Content-Type": "application/json" },

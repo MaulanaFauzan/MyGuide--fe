@@ -12,28 +12,27 @@ export default defineNuxtRouteMiddleware((to, from) => {
   if (token.value) {
     // check if value exists
     authenticated.value = true; // update the state to authenticated
-    
-  };
+  }
 
   // if token exists and url is /login redirect to homepage
-  if (token.value && (to?.name === "auth-login")) {
-    
+  if (token.value && to?.name === "login") {
     return navigateTo("/home");
-    
+  } else if (token.value && to?.name == "index") {
+    return navigateTo("/home");
   }
-//   } else if (token.value && from?.name === "home-maps") {
-//     return navigateTo("/home/");
-//   } else if (token.value && from?.name === "home-profile") {
-//     return navigateTo("/home/");
-//   } else if (token.value && from?.name === "home-selengkapnya") {
-//     return navigateTo("/home/");
-//   };
+  //   } else if (token.value && from?.name === "home-maps") {
+  //     return navigateTo("/home/");
+  //   } else if (token.value && from?.name === "home-profile") {
+  //     return navigateTo("/home/");
+  //   } else if (token.value && from?.name === "home-selengkapnya") {
+  //     return navigateTo("/home/");
+  //   };
   console.log(to);
-  
+
   if (!token.value) {
-    if(to?.name === "home") {
+    if (to?.name === "home") {
       return navigateTo("/");
-    } else if(to?.name === "home-profile") {
+    } else if (to?.name === "home-profile") {
       return navigateTo("/");
     } else if (to?.name === "home-maps") {
       return navigateTo("/");
@@ -48,11 +47,4 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }
     return;
   }
-
-  
-
-  
-  
 });
-
-

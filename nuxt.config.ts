@@ -1,7 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  
+  plugins: [
+    '~/plugins/axios.js',
+  ],
   css: ["~/assets/style.css", "~/assets/maps.css", "~/assets/pemesanan.css"],
   modules: [
     [
@@ -27,7 +29,7 @@ export default defineNuxtConfig({
         ],
       },
     ],
-    "nuxt-vue3-google-signin"
+    "nuxt-vue3-google-signin",
   ],
   googleSignIn: {
       clientId: "476230501485-d8r0pa7jt1978a059t667ruhm0m8vdbn.apps.googleusercontent.com",
@@ -74,7 +76,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseUrl: "http://192.168.0.102:9090/",
+      baseUrl: "http://localhost:9090/",
       appSecret: "",
     },
   },
