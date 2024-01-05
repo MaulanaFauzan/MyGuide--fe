@@ -35,15 +35,14 @@
                     <h2 style="text-align: center">Best TourGuide</h2>
                     <h6 style="text-align: center">TourGuide terbaik kami</h6>
                     <div class="row w-100 justify-content-center gx-4">
-                        <div v-for="item in 3" class="col-12 col-md-6 col-lg-4">
+                        <div v-for="user in users" class="col-12 col-md-6 col-lg-4">
                             <div class="item">
-                                <img src="https://images.unsplash.com/photo-1480429370139-e0132c086e2a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFufGVufDB8fDB8fHww"
+                                <img :src="user.pathFoto || 'https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'"
                                     alt="Treble Bar" class="w-100" style="height: 250px;" />
-                                <h2>Try Prasetyo</h2>
-                                <p class="rating">4.8</p>
-                                <p class="price">Rp.460k / day</p>
-                                <p>Bandung</p>
-                                <p>Bandung adalah tempat kita menemukan cinta</p>
+                                <h2>{{ user.name || 'Tour Guide' }}</h2>
+                                
+                                <p class="price">Rp.{{ user.price || '-' }} / day</p>
+                                
                             </div>
                         </div>
                     </div>
@@ -106,9 +105,38 @@
 </template>
 
 <script>
+import axios from "axios"
 
 definePageMeta({
     // this should match the name of the file inside the middleware directory 
     layout: 'default'
 })
+
+export default {
+  data() {
+    return {
+      users: [], // Store the retrieved users here
+    };
+  },
+  mounted() {
+    // Fetch users when the component is mounted
+    this.getAllUsersByRole();
+  },
+  methods: {
+    async getAllUsersByRole() {
+      try {
+        const response = await axios.get('http://localhost:9090/user/getAllByRole', {
+          params: {
+            role: 'tourguide', // Specify the role you want to retrieve
+          },
+        });
+
+        // Update the users data with the retrieved data
+        this.users = response.data.data;
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    },
+  },
+};
 </script>

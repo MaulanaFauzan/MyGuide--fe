@@ -49,7 +49,7 @@
             <p>Already have account? <NuxtLink to="/login">Login</NuxtLink></p>
           </div>
           <div class="center">
-            <p>Register as tourguide? <NuxtLink to="/tourguide-signup">Click here!</NuxtLink></p>
+            <p>Register as guest? <NuxtLink to="/signup">Click here!</NuxtLink></p>
           </div>
         </div>
       </div>
@@ -222,7 +222,7 @@ const register = async () => {
   const confirmationResult = await Swal.fire({
     icon: 'question',
     title: 'Confirmation',
-    text: 'Are you sure you want to register as user?',
+    text: 'Are you sure you want to register as tourguide?',
     showCancelButton: true,
     confirmButtonText: 'Yes',
     cancelButtonText: 'No',
@@ -246,7 +246,7 @@ const register = async () => {
     password: registerUser.value.password,
     email: registerUser.value.email,
     address: registerUser.value.address,
-    role: "user"
+    role: "tourguide",
   };
 
   try {
