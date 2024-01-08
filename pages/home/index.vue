@@ -35,14 +35,14 @@
                     <h2 style="text-align: center">Best TourGuide</h2>
                     <h6 style="text-align: center">TourGuide terbaik kami</h6>
                     <div class="row w-100 justify-content-center gx-4">
-                        <div v-for="user in users" class="col-12 col-md-6 col-lg-4">
-                            <div class="item">
+                        <div v-for="(user,index) in users" :key="index" class="col-12 col-md-6 col-lg-4">
+                            <div class="item">  
                                 <img :src="user.pathFoto || 'https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'"
                                     alt="Treble Bar" class="w-100" style="height: 250px;" />
                                 <h2>{{ user.name || 'Tour Guide' }}</h2>
                                 
                                 <p class="price">Rp.{{ user.price || '-' }} / day</p>
-                                
+                                <p><i class="fas fa-map-marker-alt"></i> {{user.dest.name}} <span></span></p>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                     <h6 style="text-align: center">Temukan destinasi Impianmu</h6>
 
                     <div class="row gx-4 gy-4">
-                        <div v-for="item in 10" class="col-12 col-md-6 col-lg-4">
+                        <div v-for="item in 10" :key="item" class="col-12 col-md-6 col-lg-4">
                             <div class="item">
                                 <img src="https://images.unsplash.com/photo-1608814453525-d325f2ff6b1f?q=80&w=2036&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                     alt="Tokojawa" class="w-100" style="height: 250px;" obj />
