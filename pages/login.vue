@@ -113,7 +113,7 @@ button {
         <div class="main">
 
           <div class="container-scroller">
-            <form @submit.prevent="login" class="formLogin">
+            <form @submit.prevent="login" class="formLogin"> 
               <h3>Login Here</h3>
 
               <label for="username">Email</label>
