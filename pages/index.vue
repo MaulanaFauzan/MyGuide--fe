@@ -174,8 +174,21 @@
 </template>
 
 <script>
-definePageMeta({
-  layout: 'noauth'
-})
 
+export default {
+  layout: 'noauth',
+  data(){
+    return{
+      destinations:[]
+    }
+  },
+  mounted(){
+
+  },
+  methods:{
+    fetchData(){
+
+    }
+  }  
+}
 </script>

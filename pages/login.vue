@@ -111,29 +111,38 @@ button {
         <div class="bg"></div>
 
         <div class="main">
-
           <div class="container-scroller">
             <form @submit.prevent="login" class="formLogin"> 
               <h3>Login Here</h3>
 
               <label for="username">Email</label>
-              <input type="text" placeholder="Email" id="Email" v-model="user.email" />
+              <input
+                type="text"
+                placeholder="Email"
+                id="Email"
+                v-model="user.email"
+              />
 
               <label for="password">Password</label>
-              <input type="password" placeholder="Password" v-model="user.password" id="password" />
+              <input
+                type="password"
+                placeholder="Password"
+                v-model="user.password"
+                id="password"
+              />
               <div>
                 <button>Log In</button>
               </div>
               <div class="d-flex justify-content-center">
-                <GoogleSignInButton @success="handleLoginSuccess" @error="handleLoginError">
+                <GoogleSignInButton
+                  @success="handleLoginSuccess"
+                  @error="handleLoginError"
+                >
                 </GoogleSignInButton>
               </div>
               <div class="d-flex justify-content-center">
                 <GithubLoginButton></GithubLoginButton>
               </div>
-              
-
-
             </form>
           </div>
         </div>
@@ -166,7 +175,6 @@ const login = async () => {
   // redirect to homepage if user is authenticated
   console.log("auth", authenticated);
   if (authenticated.value) {
-
     Swal.fire({
       title: "Success",
       text: "Login Success!",
@@ -181,8 +189,8 @@ const login = async () => {
     });
   } else if (!authenticated.value) {
     Swal.fire({
-      title: "Error!",
-      text: "Login Error, Please Try Again!",
+      title: "Failed!",
+      text: "Wrong email or password!",
       icon: "error",
       confirmButtonText: "Try Again!",
     }).then((result) => {
@@ -207,7 +215,9 @@ const handleLoginSuccess = async (response: CredentialResponse) => {
   if (credential != "false") {
     const decodedCredential = decodeCredential(credential);
     console.log(decodedCredential);
-    const url = `http://localhost:9090/user/OAuthGoogle?${getQueryParams(decodedCredential)}`;
+    const url = `http://localhost:9090/user/OAuthGoogle?${getQueryParams(
+      decodedCredential
+    )}`;
     window.location.href = url;
   }
 };
@@ -218,7 +228,7 @@ const getQueryParams = (obj: any) => {
     params.append(key, obj[key]);
   }
   return params.toString();
-}
+};
 // handle an error event
 const handleLoginError = () => {
   console.error("Login failed");

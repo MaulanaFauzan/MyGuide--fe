@@ -18,7 +18,6 @@ export default {
       queryParamsObject[key] = value;
     });
     await authenticateUserOauth(queryParamsObject);
-    console.log("auth", authenticated.value);
     if (authenticated.valu1e) {
       Swal.fire({
         title: "Success",
@@ -26,11 +25,12 @@ export default {
         icon: "success",
         confirmButtonText: "OK",
       }).then((result) => {
+        this.$router.push("/")
       });
     } else if (!authenticated.value) {
       Swal.fire({
-        title: "Error!",
-        text: "Login Error, Please Try Again!",
+        title: "Failed!",
+        text: "Wrong email or password!",
         icon: "error",
         confirmButtonText: "Try Again!",
       }).then((result) => {
