@@ -81,14 +81,14 @@
             >
               <div class="item">
                 <img
-                  src="https://images.unsplash.com/photo-1608814453525-d325f2ff6b1f?q=80&w=2036&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  :src="destination.pathFoto || 'https://images.unsplash.com/photo-1608814453525-d325f2ff6b1f?q=80&w=2036&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'"
                   alt="Tokojawa"
                   class="w-100"
                   style="height: 250px"
                   obj
                 />
                 <h2>{{ destination.name }}</h2>
-                <p class="rating">5.0</p>
+                <p>{{destination.deskripsi}}</p>
                 <p class="price">{{ destination.price }}</p>
                 <div style="padding-top: 5%">
                   <router-link
@@ -156,6 +156,7 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 
 definePageMeta({
   // this should match the name of the file inside the middleware directory
@@ -188,7 +189,7 @@ export default {
         );
         this.users = response.data.data;
       } catch (error) {
-        console.error("Error fetching users:", error);
+        Swal.fire("error", error, "error");
       }
     },
     async getAllDestination() {
@@ -201,7 +202,7 @@ export default {
 
         this.destinations = response.data.data;
       } catch (error) {
-        console.error("Error fetching users:", error);
+        Swal.fire("error", error, "error");
       }
     },
   },

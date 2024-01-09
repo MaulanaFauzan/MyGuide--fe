@@ -157,9 +157,8 @@ import { useAuthStore } from "~/store/auth";
 import Swal from "sweetalert2";
 
 definePageMeta({
-  layout: "noauth",
-});
-
+  layout: 'noauth',
+}) 
 const { authenticateUser } = useAuthStore(); // use auth store
 
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive

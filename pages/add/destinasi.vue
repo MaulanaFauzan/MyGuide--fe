@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="main">
           <form
-            @submit.prevent="onSubmit()"
+            @submit.prevent="onSubmit"
             style="padding-top: 5%; padding-left: 5%"
           >
             <div class="form-group row">
@@ -17,6 +17,7 @@
                   class="form-control"
                   id="inputDestinasi"
                   placeholder="Destinasi"
+                  v-model="name"
                 />
               </div>
             </div>
@@ -31,6 +32,7 @@
                   class="form-control"
                   id="inputAlamat"
                   placeholder="Alamat"
+                  v-model="alamat"
                 />
               </div>
             </div>
@@ -43,13 +45,14 @@
                 <select
                   class="custom-select my-1 mr-sm-9"
                   id="inlineFormCustomSelectPref"
+                  v-model="kota"
                 >
                   <option selected>Choose...</option>
-                  <option value="1">Bandung</option>
-                  <option value="2">Yogyakarta</option>
-                  <option value="3">Malang</option>
-                  <option value="4">Makassar</option>
-                  <option value="5">Surabaya</option>
+                  <option value="Bandung">Bandung</option>
+                  <option value="Yogyakarta">Yogyakarta</option>
+                  <option value="Malang">Malang</option>
+                  <option value="Makassar">Makassar</option>
+                  <option value="Surabaya">Surabaya</option>
                 </select>
               </div>
             </div>
@@ -63,9 +66,10 @@
                   <div class="input-group">
                     <span class="input-group-text">Rp.</span>
                     <input
-                      type="text"
+                      type="number"
                       class="form-control m-0"
                       aria-label="Amount (to the nearest dollar)"
+                      v-model="hargaAwal"
                     />
                   </div>
                   <div class="align-items-center">
@@ -74,9 +78,10 @@
                   <div class="input-group">
                     <span class="input-group-text">Rp.</span>
                     <input
-                      type="text"
+                      type="number"
                       class="form-control m-0"
                       aria-label="Amount (to the nearest dollar)"
+                      v-model="hargaAkhir"
                     />
                   </div>
                 </div>
@@ -129,18 +134,21 @@
                   class="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
+                  v-model="deskripsi"
                 ></textarea>
               </div>
             </div>
 
             <div class="form-group row" style="padding-top: 3">
-              <label for="exampleFormControlFile1">Masukkan Gambar</label>
               <div class="col-sm-9">
-                <input
-                  type="file"
-                  class="form-control-file"
-                  id="exampleFormControlFile1"
-                />
+                <button
+                  type="button"
+                  class="btn btn-link text-white"
+                  style="padding-top: 1%"
+                  @click="changePhoto()"
+                >
+                  Masukkan Gambar
+                </button>
               </div>
             </div>
 
@@ -148,13 +156,7 @@
               class="btn-container"
               style="padding-top: 3%; padding-bottom: 4%"
             >
-              <button
-                id="btn"
-                type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-              >
+              <button id="btn" type="submit" class="btn btn-primary">
                 Submit
               </button>
             </div>
@@ -258,106 +260,98 @@ const changePhoto = async () => {
 import axios from "axios";
 import Swal from "sweetalert2";
 
-definePageMeta({
-  name: "default",
-});
-
-
+declare const definePageMeta: (meta: { name: string }) => void;
+declare const useCookie: (
+  cookieName: string
+) => { value: { id: string } } | null;
 
 export default {
-  
   data() {
     return {
       name: "",
       alamat: "",
-      kota: "", // Assuming you have a property for city in your form
+      kota: "",
       hargaAwal: "",
       hargaAkhir: "",
       deskripsi: "",
-      pathFoto: "", // You will update this with the actual pathFoto later
-      loading: ""
+      pathFoto: "",
+      writerID: useCookie("user")?.value?.id,
     };
   },
-  
+
   methods: {
-    onSubmit() {
-      const user = useCookie("user");
-      
-      const formData = {
-        name: this.name,
-        alamat: this.alamat,
-        kota: this.kota,
-        rangeHarga: `${this.hargaAwal} - ${this.hargaAkhir}`,
-        deskripsi: this.deskripsi,
-        pathFoto: this.pathFoto,
-      };
+    async onSubmit() {
+      try {
+        const formData = {
+          name: this.name,
+          alamat: this.alamat,
+          kota: this.kota,
+          rangeHarga: `${this.hargaAwal} - ${this.hargaAkhir}`,
+          deskripsi: this.deskripsi,
+          pathFoto: this.pathFoto,
+          writerId: this.writerID as string,
+        };
 
-      const writerId = getUserFromCookie().id; // Replace with your actual cookie retrieval logic
+        await axios.post("http://localhost:9090/destination/save", formData);
 
-      axios
-        .post("http://localhost:9090/destination/save", {
-          id: "", // This will be generated on the backend
-          name: formData.name,
-          //writer_id: user.id,
-          alamat: formData.alamat,
-          rate: 0, // Assuming you want to set the initial rate as 0
-          rangeHarga: formData.rangeHarga,
-          pathFoto: formData.pathFoto,
-        })
-        .then((response) => {
-          // Handle success, you may want to show a success message
-          console.log(response.data);
-          Swal.fire("Success", "Destination saved successfully!", "success");
-        })
-        .catch((error) => {
-          // Handle error, you may want to show an error message
-          console.error("Error saving destination:", error);
-          Swal.fire(
-            "Error",
-            "Failed to save destination. Please try again later.",
-            "error"
-          );
-        });
+        Swal.fire("Success", "Destination saved successfully!", "success");
+      } catch (error) {
+        console.error("Error saving destination:", error);
+        Swal.fire(
+          "Error",
+          "Failed to save destination. Please try again later.",
+          "error"
+        );
+      }
     },
 
-    // ... (existing code)
-
-    changePhoto() {
+    async changePhoto() {
       try {
         const fileInput = document.createElement("input");
         fileInput.type = "file";
         fileInput.accept = "image/*";
 
-        fileInput.addEventListener("change", async (event) => {
-          const file = (event.target as HTMLInputElement).files?.[0];
-          if (file) {
-            const shouldUpdate = await Swal.fire({
-              title: "Confirmation",
-              text: "Are you sure you want to change your photo?",
-              icon: "question",
-              showCancelButton: true,
-              confirmButtonText: "Yes",
-              cancelButtonText: "No",
-            });
+        const fileChangeEvent = (): Promise<Event> =>
+          new Promise((resolve) => {
+            fileInput.addEventListener("change", resolve, { once: true });
+            fileInput.click();
+          });
 
-            if (shouldUpdate.isConfirmed) {
-              const reader = new FileReader();
-              reader.onload = () => {
-                //destinasi.value.pathFoto = reader.result as string; // Update the user's pathFoto with base64 data
-              };
-              reader.readAsDataURL(file);
-              Swal.fire("success", "Success Update Foto Profile!", "success");
-            }
+        await fileChangeEvent();
+
+        const file = fileInput.files?.[0];
+
+        if (file) {
+          const shouldUpdate = await Swal.fire({
+            title: "Confirmation",
+            text: "Are you sure you want to upload this photo?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+          });
+
+          if (shouldUpdate.isConfirmed) {
+            const reader = new FileReader();
+
+            const readAsDataURL = (): Promise<string | ArrayBuffer | null> =>
+              new Promise((resolve) => {
+                reader.onload = () => {
+                  resolve(reader.result);
+                };
+                reader.readAsDataURL(file);
+              });
+
+            this.pathFoto = (await readAsDataURL()) as string;
+            Swal.fire("Success", "Success Upload Photo!", "success");
           }
-        });
-
-        fileInput.click();
+        }
       } catch (error) {
         console.error("Error changing user photo:", error);
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "Failed to change user photo. Please try again later.",
+          text: "Failed to upload photo. Please try again later.",
         });
       }
     },
