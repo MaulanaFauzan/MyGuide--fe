@@ -112,6 +112,27 @@
   justify-content: center;
 }
 
+.srch {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+
+.srch input {
+  display: block;
+  color: #ffffff;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
 /* navbar {
         float: right;
       } */
@@ -455,6 +476,7 @@ button {
   float: left;
   width: 15%;
 }
+
 .chat-msg.self > .msg-avatar img {
   width: 45px;
   height: 45px;
@@ -571,4 +593,14 @@ h1.jargon {
 }
 .w-150px {
   width: 150px !important;
+}
+
+/* -------profile area----------------- */
+.profile {
+  margin-top: 3;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }

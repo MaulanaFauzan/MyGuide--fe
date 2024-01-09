@@ -13,11 +13,11 @@
       </div>
       <div class="container-alamat">
         <div class="alamat">
-          <div class="">
+          <div class="srch">
             <p style="margin-bottom: 0; font-size: 25px">Kota</p>
             <input type="text" name="" id="" style="margin-bottom: 0" />
           </div>
-          <div class="" style="align-items: center">
+          <div class="srch" style="align-items: center">
             <p style="margin-bottom: 0; font-size: 25px">Destinasi</p>
             <input
               type="text"
