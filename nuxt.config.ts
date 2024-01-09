@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   plugins: [
     '~/plugins/axios.js',
+    '~/plugins/textFilter.js',
   ],
   css: ["~/assets/style.css", "~/assets/maps.css", "~/assets/pemesanan.css"],
   modules: [

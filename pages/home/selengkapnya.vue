@@ -100,7 +100,7 @@
                   <i class="fas fa-map-marker-alt"></i> {{ user.dest.name }}
                   <span></span>
                 </p>
-                <button class="btn btn-success">Order</button>
+                <router-link :to="'/add/transaction?id='+user.id" class="btn btn-success">Order</router-link>
               </div>
             </div>
           </div>
@@ -125,6 +125,16 @@ export default {
     this.getAllUsersByRole()
   },
   methods:{
+    async getCurrentDestination(){
+        try {
+        const response = await axios.get('http://localhost:9090/user/destination/'+this.$route.query.id).then((res)=>{
+            console.log(res);
+        });
+        this.destination = response.data.data;
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    },
     async getAllUsersByRole() {
       try {
         const response = await axios.get('http://localhost:9090/user/getAllByRole', {

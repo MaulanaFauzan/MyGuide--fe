@@ -92,7 +92,7 @@
                 <p class="price">{{ destination.price }}</p>
                 <div style="padding-top: 5%">
                   <router-link
-                    :to="'selengkapnya?id=' + destination.id"
+                    :to="'home/selengkapnya?id=' + destination.id"
                     class="btn btn-primary text-white"
                   >
                     Selengkapnya
@@ -173,8 +173,12 @@ export default {
     // Fetch users when the component is mounted
     this.getAllUsersByRole();
     this.getAllDestination();
+    navigator.geolocation.getCurrentPosition(this.showPosition);
   },
   methods: {
+    showPosition(position) {
+        console.log(position.coords);
+},
     async getAllUsersByRole() {
       try {
         const response = await axios.get(
