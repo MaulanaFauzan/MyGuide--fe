@@ -1,13 +1,16 @@
 <template>
   <div>
+    <div class="" style="position: absolute;">
+      <div class="bg"></div>
+    </div>
     <div class="container-pemesanan">
       <div
         class="pemesanan"
-        style="padding-top: 2%; padding-bottom: 0%; border-bottom: 0cap"
+        style="padding-top: 1%; padding-bottom: 0%; border-bottom: 0cap"
       >
         <h2 style="color: aliceblue; font-size: 30px">Form Pemesanan</h2>
       </div>
-      <form @submit.prevent="onSubmit">
+      <form class="bookForm" @submit.prevent="onSubmit">
         <label for="name" style="color: aliceblue">Nama:</label>
         <input
           type="text"
