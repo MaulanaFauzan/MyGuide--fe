@@ -64,6 +64,19 @@
                       v-model="hargaAwal"
                     />
                   </div>
+                  
+                  <div class="align-items-center">
+                    <span class="input-group-text">-</span>
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-text">Rp.</span>
+                    <input
+                      type="number"
+                      class="form-control m-0"
+                      aria-label="Amount (to the nearest dollar)"
+                      v-model="hargaAkhir"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -138,10 +151,11 @@ export default {
       try {
         const formData = {
           name: this.name,
-          alamat: this.alamat,
-          kota: this.kota,
+          adress: this.alamat,
+          longitude:this.longitude,
+          latitude:this.latitude,
           rangeHarga: `${this.hargaAwal} - ${this.hargaAkhir}`,
-          deskripsi: this.deskripsi,
+          description: this.deskripsi,
           pathFoto: this.pathFoto,
           writerId: this.writerID,
         };
