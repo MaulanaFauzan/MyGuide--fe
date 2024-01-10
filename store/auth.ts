@@ -16,8 +16,6 @@ export const useAuthStore = defineStore("auth", {
       this.authenticated = authenticated;
     },
     async authenticateUser({ email, password }: UserPayloadInterface) {
-      console.log("sebelom login", this.authenticated);
-
       // useFetch from nuxt 3
       const { data, pending }: any = await useFetch(
         "http://localhost:9090/user/login",
@@ -38,11 +36,8 @@ export const useAuthStore = defineStore("auth", {
         user.value = data.value.data;
         token.value = data.value.data._token; // set token to cookie
         if (token.value) {
-          console.log("setelah 1 login", this.authenticated);
-
           this.authenticated = true; // set authenticated  state value to true
         }
-        console.log("setelah login", this.authenticated);
       }
     },
     async authenticateUserOauth(userOauth: any) {
@@ -53,7 +48,6 @@ export const useAuthStore = defineStore("auth", {
       if (token.value) {
         this.authenticated = true; // set authenticated  state value to true
       }
-      console.log("setelah login", this.authenticated);
     },
     logUserOut() {
       Swal.fire({

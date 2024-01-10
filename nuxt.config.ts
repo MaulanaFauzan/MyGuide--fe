@@ -31,6 +31,7 @@ export default defineNuxtConfig({
       },
     ],
     "nuxt-vue3-google-signin",
+    'nuxt3-leaflet'
   ],
   googleSignIn: {
       clientId: "476230501485-d8r0pa7jt1978a059t667ruhm0m8vdbn.apps.googleusercontent.com",

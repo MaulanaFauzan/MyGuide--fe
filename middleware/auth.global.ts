@@ -2,21 +2,20 @@ import { storeToRefs } from "pinia";
 import Swal from "sweetalert2";
 import { useAuthStore } from "~/store/auth";
 export default defineNuxtRouteMiddleware((to, from) => {
-  console.log(to);
-
   const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
   const token = useCookie("token"); // get token from cookies
   const user = useCookie("user");
-  // @ts-ignore
-
+  // @ts-ignore 
   if (token.value) {
     // check if value exists
     authenticated.value = true; // update the state to authenticated
   }
 
   // if token exists and url is /login redirect to homepage
+  // @ts-ignore 
   if (token.value && to?.name === "login") {
     return navigateTo("/home");
+  // @ts-ignore 
   } else if (token.value && to?.name == "index") {
     return navigateTo("/home");
   }
@@ -27,8 +26,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   //   } else if (token.value && from?.name === "home-selengkapnya") {
   //     return navigateTo("/home/");
   //   };
-  console.log(to);
-
+  // @ts-ignore 
   if (!token.value) {
     if (to?.name === "home") {
       return navigateTo("/");

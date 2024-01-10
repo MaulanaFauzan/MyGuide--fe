@@ -61,7 +61,7 @@
 
                 <p class="price">Rp.{{ user.price || "-" }} / day</p>
                 <p>
-                  <i class="fas fa-map-marker-alt"></i> {{ user.dest.name }}
+                  <i class="fas fa-map-marker-alt"></i> {{ user.dest?.name }}
                   <span></span>
                 </p>
               </div>
@@ -192,6 +192,7 @@ export default {
           }
         );
         this.users = response.data.data;
+        console.log(this.users);
       } catch (error) {
         Swal.fire("error", error, "error");
       }

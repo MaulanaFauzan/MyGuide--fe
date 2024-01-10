@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="padding-left: 1%">GAMA</a>
+        <router-link to="/" class="navbar-brand" style="padding-left: 1%">GAMA</router-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -58,9 +58,6 @@ const router = useRouter();
 const { logUserOut } = useAuthStore();
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive
 const user = useCookie("user");
-
-
-//console.log("auth val", au);
 
 const logout = () => {
   logUserOut();

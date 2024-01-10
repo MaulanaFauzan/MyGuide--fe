@@ -31,21 +31,8 @@
         </div>
 
         <div class="form-group row" style="padding-top: 3%">
-          <label for="inputKota" class="col-sm-2 col-form-label"
-            >Kota Pilihan</label
-          >
           <div class="form-group col-sm-9">
-            <select
-              class="custom-select my-1 mr-sm-9"
-              id="inlineFormCustomSelectPref"
-            >
-              <option selected>Choose...</option>
-              <option value="1">Bandung</option>
-              <option value="2">Yogyakarta</option>
-              <option value="3">Malang</option>
-              <option value="4">Makassar</option>
-              <option value="5">Surabaya</option>
-            </select>
+            <SelectS :options="options" label="Select an option" />
           </div>
         </div>
 
@@ -102,14 +89,20 @@
       </form>
 
       <footer>
-          <p>footer</p>
-        </footer>
+        <p>footer</p>
+      </footer>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-// definePageMeta({
-//   name: "add"
-// })
+<script>
+export default {
+  data(){
+    return {
+      options:[
+        {label:"DAN"},{label:"Cow"}
+      ]
+      };
+  }
+}
 </script>
