@@ -1,13 +1,14 @@
 <template>
   <div>
     <div class="container-fluid">
-      <form style="padding-top: 5%; padding-left: 5%">
+      <form @submit.prevent="save" style="padding-top: 5%; padding-left: 5%">
         <div class="form-group row">
           <label for="inputTourGuide" class="col-sm-2 col-form-label"
             >Nama Tour Guide</label
           >
           <div class="col-sm-9">
             <input
+              required
               type="text"
               class="form-control"
               id="inputTourGuide"
@@ -22,6 +23,7 @@
           >
           <div class="col-sm-9">
             <input
+              required
               type="text"
               class="form-control"
               id="inputAlamat"
@@ -31,8 +33,19 @@
         </div>
 
         <div class="form-group row" style="padding-top: 3%">
-          <div class="form-group col-sm-9">
-            <SelectS :options="options" label="Select an option" />
+          <label for="inputAlamat" class="col-sm-2 col-form-label"
+            >Destinasi</label
+          >
+          <div class="col-sm-9">
+            <model-select
+              class="form-control"
+              ref="select"
+              :options="options"
+              v-model="item"
+              placeholder="Pilih Destinasi Guide berada"
+            >
+            </model-select>
+            
           </div>
         </div>
 
@@ -96,13 +109,38 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
+import { ModelSelect } from "vue-search-select";
+import axios from "axios";
+import "vue-search-select/dist/VueSearchSelect.css";
+
 export default {
-  data(){
+  components: { ModelSelect },
+  data() {
     return {
-      options:[
-        {label:"DAN"},{label:"Cow"}
-      ]
-      };
-  }
-}
+      options: [],
+      item: "",
+    };
+  },
+  mounted() {
+    this.getAllDestination();
+  },
+  methods: {
+    async getAllDestination() {
+      try {
+        const response = await axios.get("http://localhost:9090/destination/", {
+          params: {
+            limit: "1000",
+          },
+        });
+        const destinations = response.data.data;
+        destinations.forEach((el) => {
+          this.options.push({ value: el.id, text: el.name });
+        });
+      } catch (error) {
+        Swal.fire("error", error, "error");
+      }
+    },
+  },
+};
 </script>

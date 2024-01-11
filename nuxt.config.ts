@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/axios.js',
     '~/plugins/textFilter.js',
+    '~/plugins/select2.client.js',
   ],
   css: ["~/assets/style.css", "~/assets/maps.css", "~/assets/pemesanan.css"],
   modules: [
