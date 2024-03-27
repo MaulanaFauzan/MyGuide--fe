@@ -46,10 +46,12 @@
           </div>
 
           <div class="center">
-            <p>Already have account? <NuxtLink to="/login">Login</NuxtLink></p>
+            <p>Already have account? <NuxtLink to="/login">Login</NuxtLink>
+            </p>
           </div>
           <div class="center">
-            <p>Register as guest? <NuxtLink to="/signup">Click here!</NuxtLink></p>
+            <p>Register as user? <NuxtLink to="/signup">Click here!</NuxtLink>
+            </p>
           </div>
         </div>
       </div>
@@ -165,6 +167,7 @@ button {
 <script lang="ts">
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const registerUser = ref({
   email: "",
@@ -173,7 +176,7 @@ const registerUser = ref({
   lastName: "",
   address: "",
   confirmPassword: "",
-  
+
 });
 
 const validateRegistration = () => {
@@ -222,7 +225,7 @@ const register = async () => {
   const confirmationResult = await Swal.fire({
     icon: 'question',
     title: 'Confirmation',
-    text: 'Are you sure you want to register as tourguide?',
+    text: 'Are you sure you want to register as user?',
     showCancelButton: true,
     confirmButtonText: 'Yes',
     cancelButtonText: 'No',
@@ -242,28 +245,30 @@ const register = async () => {
 
   // Construct the user object
   const user = {
-    name: `${registerUser.value.firstName} ${registerUser.value.lastName}`,
-    password: registerUser.value.password,
     email: registerUser.value.email,
+    password: registerUser.value.password,
+    name: registerUser.value.firstName + ' ' + registerUser.value.lastName,
     address: registerUser.value.address,
-    role: "tourguide",
+    confirmPassword: registerUser.value.confirmPassword,
+    role: 'user'
   };
 
   try {
     // Make the API request
-    const response = await fetch('http://localhost:9090/user/save', {
-      method: 'POST',
+    const response = await axios.post('http://127.0.0.1:8000/api/register', user, {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user),
     });
+    console.log(response);
 
-    if (response.ok) {
+
+    if (response.data.success) {
+
       Swal.fire({
         icon: 'success',
         title: 'Success!',
-        text: 'Registration successful!',
+        text: response.data.message,
       }).then((result) => {
         const router = useRouter();
         router.push("/login")
@@ -273,7 +278,7 @@ const register = async () => {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Registration failed!',
+        text: response.data.message,
       });
       // You can handle failure behavior here
     }
@@ -287,6 +292,7 @@ const register = async () => {
     // You can handle error behavior here
   }
 };
+
 
 export { registerUser, register };
 

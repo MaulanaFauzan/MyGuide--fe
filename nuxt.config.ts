@@ -2,18 +2,18 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   plugins: [
-    '~/plugins/axios.js',
-    '~/plugins/textFilter.js',
-    '~/plugins/select2.client.js',
+    "~/plugins/axios.js",
+    "~/plugins/textFilter.js",
+    "~/plugins/select2.client.js",
   ],
   css: ["~/assets/style.css", "~/assets/maps.css", "~/assets/pemesanan.css"],
   modules: [
     [
-      '@pinia/nuxt',
+      "@pinia/nuxt",
       {
         autoImports: [
           // automatically imports `defineStore`
-          'defineStore',
+          "defineStore",
         ],
       },
     ],
@@ -32,31 +32,30 @@ export default defineNuxtConfig({
       },
     ],
     "nuxt-vue3-google-signin",
-    'nuxt3-leaflet'
+    "nuxt3-leaflet",
   ],
   googleSignIn: {
-      clientId: "476230501485-d8r0pa7jt1978a059t667ruhm0m8vdbn.apps.googleusercontent.com",
-    },
-    // <link
-    //   rel="stylesheet"
-    //   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    // />
-    // <link
-    //   href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
-    //   rel="stylesheet"
-    // />
+    clientId:
+      "476230501485-d8r0pa7jt1978a059t667ruhm0m8vdbn.apps.googleusercontent.com",
+  },
+  // <link
+  //   rel="stylesheet"
+  //   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  // />
+  // <link
+  //   href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+  //   rel="stylesheet"
+  // />
   app: {
-    
     head: {
       link: [
         {
           href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css",
           rel: "stylesheet",
-          
         },
         {
           href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap",
-          rel: "stylesheet"
+          rel: "stylesheet",
         },
 
         {
@@ -79,9 +78,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseUrl: "http://localhost:9090/",
+      baseUrl: "http://127.0.0.1:8000/",
       appSecret: "",
     },
   },
-} 
-);
+});
